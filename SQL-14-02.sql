@@ -1,0 +1,156 @@
+
+------------------------------14-feb-2026----------------------------------------
+
+-- Select ename, sal salary, sal+50 as "hiked salary" from emp;
+-- Select ename, sal*12 "anual salary", sal*0.9*12 as "anual deducted salary" from emp;
+-- select ename, sal+comm "Total salary" from emp;
+-- select *, sal*12 "anaual salary" from emp;
+-- select ename, job, sal-100 "Penalised salary" from emp;
+-- select ename, deptno from emp where deptno=20;
+-- select ename, sal from emp where sal>2000;
+-- select * from emp where job='MANAGER';
+-- select ename, hiredate from emp where hiredate >= '1982-01-01';
+-- select ename, sal, sal*12 annual_salary from emp where sal*12>12000;
+-- select ename||' is working as '||job||' and earning salary of '|| sal from emp where ename='SMITH';
+-- select * from emp where deptno=20 and sal>2000;
+-- select * from emp where deptno=20 or deptno=10;
+ -- select * from emp where sal>2000 and (deptno=20 or deptno=10);
+ -- select * from emp where joB not in ('ANALYST','SALESMAN')
+ -- SELECT * FROM EMP WHERE JOB <>'ANALYST' AND JOB <>'SALESMAN'
+ -- SELECT * FROM EMP WHERE NOT (JOB='SALESMAN' OR JOB='ANALYST')
+ -- select ename, sal from emp where sal between 1000 and 3000;
+ -- select * from emp where hiredate between '1981-01-01' and '1981-12-12';
+ -- select ename, sal from emp where sal Not between 1000 and 3000;
+ -- select * from emp where comm is null;
+ -- select * from emp where comm is not null;
+ -- select * from emp where comm is null and sal is not null;
+-- select ename from emp where ename like 'S%';
+-- select ename from emp where ename like '%A%';
+-- select * from emp where ename like '%A%A%';
+-- select * from emp where ename like '%A%A%' and ename not like '%A%A%A%';
+
+-- select ename, sal from emp where round(sal)::text like '___';
+-- select * from emp where hiredate::text like '%02%';
+-- select ename from emp where ename like 'A%' or ename like 'S%';
+
+-- select ename from emp where ename like 'A%' or ename like 'I%'or ename like
+-- 'O%' or ename like 'E%' or ename like 'U%';
+
+-- select ename from emp where (ename not like 'A%' and ename not like 'I%' 
+-- and ename not like 'O%' and ename not like 'E%' and ename not like 'U%') 
+-- and (ename like '%A' or ename like '%I'or ename like '%O' or ename like '%E' 
+-- or ename like '%U');
+
+-- select * from emp where mgr in (select empno from emp where deptno=10);
+-- select * from emp where mgr is not null and deptno=10;
+-- select * from emp where mgr is null and (deptno=10 or deptno=30);
+-- select * from emp where ename like 'J%S';
+-- select * from emp where ename like '_____';
+-- select * from emp where hiredate::text like '1982-%-01';
+-- select * from emp where ename like '______' and ename like 'A%A';
+-- select * from emp where job like '%MAN%';
+-- select * from emp where ename like '%S';
+-- select * from emp where hiredate::text like '____-01-__' or hiredate::text like '____-02-__';
+-- select * from emp where ename like '%L%L%' and empno in (select mgr from emp);
+-- select ename from emp where ename like 'A%' or ename like 'J%'or ename like 'S%'
+-- select * from emp where ename not like '__A%';
+-- SELECT ENAME, length(ename) from emp;
+-- select 'Hello world';
+-- select ename from emp where length(ename)=4;
+-- select ename from emp where length(ename)>4 and length(ename)<7;
+
+-----------------------------------------------16-feb-2026---------------------------------------------------
+
+-- select upper('smith');
+-- select lower('SMITH');
+-- select initcap('smith');
+-- select substr('qspiders',2,3);
+-- select substr('qspiders',5,1);
+-- select substr('qspiders',6,5);
+-- select substr('qspiders',2);
+-- select right('qspiders',1);
+-- Select position('a' in 'Malayalam');
+-- select substr('abc@gmail.com', position('@'in'abc@gmail.com'));
+-- select now();
+-- select current_timestamp;
+-- select Extract(year from now());
+-- select Extract(month from now());
+-- select Extract(day from now());
+-- select Extract(hour from now());
+-- select Extract(minute from now());
+-- select Extract(second from now());
+-- select * from emp where to_char(hiredate,'dy')='fri';
+-- select * from emp where to_char(hiredate,'mon')='dec';
+-- select * from emp where to_char(hiredate,'yyyy')='1981';
+-- select * from emp where to_char(hiredate,'mon')='mar' or to_char(hiredate,'mon')='apr' or to_char(hiredate,'mon')='may';
+
+-- select * from emp where to_char(hiredate,'yyyy')='1981' and 
+-- (to_char(hiredate,'mon')='feb' or to_char(hiredate,'mon')='apr' or to_char(hiredate,'mon')='dec') and 
+-- (to_char(hiredate,'dy')='fri' or to_char(hiredate,'dy')='wed');
+
+-- select * from emp where to_char(hiredate,'yyyy')='1981' and to_char(hiredate,'mon') In ('feb','apr','dec') and
+-- to_char(hiredate,'dy') in ('fri','wed');
+
+-- select * from emp where hiredate> current_date - interval '44 year';
+-- select extract (year from age(current_date,'2025-01-01')) exp;
+-- select * from emp where extract (year from age(current_date,hiredate)) >10;
+-- select ename, sal, comm, sal+ coalesce(comm,0) total_sal from emp;
+-- select max(sal) from emp;
+-- select ename from emp where sal=(SELECT MAX(sal) FROM emp);
+-- select count(comm) from emp;
+-- select count(*), count(comm) from emp;
+-- select count(ename) employees_count from emp where ename like '%A%';
+-- select max(sal) maximuma_sal, min(sal) minimum_sal, avg(sal) average_sal from emp where deptno=20;
+-- select count(ename) NoOfEmp, sum(sal) total_sal from emp where sal>1700;
+
+-- select deptno, count(*) from emp group by deptno;
+-- select deptno, count(*) from emp where sal> 2000 group by deptno;
+-- select job, max(sal) from emp group by job;
+-- select sal, count(sal) from emp group by sal;
+-- select job, avg(sal) from emp group by job;
+-- select deptno, count(*) from emp where comm is not null group by deptno;
+-- select deptno, count(comm) from emp group by deptno;
+-- select job, deptno from emp group by deptno, job;
+-- select count(*), deptno from emp group by deptno having count(*)>=4;
+-- select count(*), deptno from emp where ename like '%A%' or ename like '%S%' group by deptno having count(*)>=2;
+-- select sal , count(*) from emp group by sal having count(*)>=2;
+-- select job, sum(sal) from emp group by job having sum(sal)>=9500;
+-- select ename, avg(sal) from emp group by ename having avg(sal)>=5500;
+-- select count(*), job from emp where sal > 1200 group by job having sum(sal)>3800;
+-- select job, max(sal) from emp group by job having max(sal)>2600;
+-- select hiredate from emp group by hiredate having count(*)>1;
+-- select job, max(sal) from emp group by job having min(sal)>100 and max(sal)>1000;
+-- select deptno , count(*) from emp where job='MANAGER' group by deptno having count(*)>=2;
+-- select count(sal) times , sal from emp group by sal order by times desc;
+-- select * from emp where sal> (select sal from emp where ename= 'ALLEN');
+
+------------------------------------------------17-feb-2026---------------------------------------------------------------
+
+-- select dname from dept where deptno= (select deptno from emp where ename='SMITH');
+-- select * from emp where sal= (select min(sal) from emp);
+-- select * from dept where deptno in (select deptno from emp where sal= (select max(sal) from emp));
+-- select ename, sal, job, hiredate from emp where deptno In (select deptno from dept where dname='SALES') and hiredate< (select hiredate from emp where ename='KING');
+-- select dname from dept where deptno in (select deptno from emp group by deptno having count(deptno)>=4);
+-- update emp set sal=3000 where ename='ALLEN';
+-- select * from emp where (sal,deptno) in (select sal,deptno from emp group by sal, deptno having count(*)>1);
+-- select * from emp limit 3 offset 4;
+-- select * from emp limit 1 offset (select count(*)-1 from emp);
+-- select distinct sal from emp order by sal desc offset 3 limit 1;
+-- select * from emp where sal in (select distinct sal from emp order by sal offset 2 limit 2);
+-- select ename , annual_salary from (select emp.* , sal*12 as annual_salary from emp) t1 where annual_salary>12000; 
+-- select ename, sal, loc from emp inner join dept on emp.deptno=dept.deptno where loc='CHICAGO';
+-- select dname , job from emp inner join dept on emp.deptno=dept.deptno where job like 'S%' and dname like 'S%';
+-- select dname, mgr from emp inner join dept on emp.deptno=dept.deptno where mgr=7839;
+-- select count(*) no_of_emp, emp.deptno, dname from emp inner join dept on emp.deptno= dept.deptno group by emp.deptno, dname, loc;
+-- select ename ,dname from emp left join dept on emp.deptno= dept.deptno;
+-- select ename ,dname from dept left join emp on emp.deptno= dept.deptno;
+-- select ename, dname from emp full join dept on emp.deptno= dept.deptno;
+
+-----------------------------------------------------19-02-2026----------------------------------------------------------------
+-- select e1.ename employee_name, e2.ename mgr_name from emp e1 join emp e2 on e1.mgr=e2.empno
+-- select e1.ename employee_name, e2.ename mgr_name, e1.sal salary from emp e1 join emp e2 on e1.mgr=e2.empno where e1.sal<e2.sal;
+-- select e1.ename emp_name, e2.ename mgr_name, e3.ename mgr_mgr_name from emp e1 join emp e2 on e1.mgr=e2.empno join emp e3 on e2.mgr=e3.empno;
+-- select deptno from emp intersect select deptno from dept;
+-- select deptno from emp except select deptno from dept;
+-- (select * from emp limit 1) union all (select * from emp limit 1);
+-- (select distinct sal from emp order by sal limit 1 offset 2) union all (select distinct sal from emp order by sal desc limit 1 offset 2 );
