@@ -5,12 +5,21 @@
 **/out/
 
 # --- Compiled files ---
+--
 *.class
-**/target/*.jar
-**/target/*.war
-**/target/*.zip
+**/*.zip
+**/*.jar
+**/*.war
+**/*.ear
 
-# --- IDE Specific (Crucial for clean repos) ---
+# --- IDE Specific (Improved) ---
+.idea/
+**/.idea/
+*.iml
+**/target/
+.settings/
+.classpath
+.project
 .idea/
 *.iml
 .settings/
