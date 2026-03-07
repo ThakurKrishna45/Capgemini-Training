@@ -1,7 +1,7 @@
-package dao;
+package com.ProductInventoryApp.dao;
 
-import model.Product;
-import util.DatabaseUtil;
+import com.ProductInventoryApp.model.Product;
+import com.ProductInventoryApp.util.DatabaseUtil;
 
 import java.sql.*;
 import java.util.ArrayList;

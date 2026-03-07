@@ -1,7 +1,7 @@
-package app;
+package com.ProductInventoryApp.app;
 
-import dao.ProductDAO;
-import model.Product;
+import com.ProductInventoryApp.dao.ProductDAO;
+import com.ProductInventoryApp.model.Product;
 
 import java.util.List;
 import java.util.Scanner;
