@@ -1,4 +1,3 @@
-package job_practice;
 
 import java.util.Arrays;
 

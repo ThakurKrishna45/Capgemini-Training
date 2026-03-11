@@ -1,4 +1,4 @@
-package job_practice;
+
 //implements Comparable<Job>
 public class Job  {
     private String title;
