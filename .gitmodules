@@ -1,3 +1,6 @@
 [submodule "Version-Control"]
 	path = Version-Control
 	url = https://github.com/ThakurKrishna45/Capgi26-remote.git
+[submodule "Class-Work/version-control"]
+	path = Class-Work/version-control
+	url = https://github.com/ThakurKrishna45/version-control.git
