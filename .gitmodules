@@ -4,3 +4,6 @@
 [submodule "Class-Work/version-control"]
 	path = Class-Work/version-control
 	url = https://github.com/ThakurKrishna45/Version-Control.git
+[submodule "Class-Work/Version-Control"]
+	path = Class-Work/Version-Control
+	url = https://github.com/ThakurKrishna45/Version-Control.git
