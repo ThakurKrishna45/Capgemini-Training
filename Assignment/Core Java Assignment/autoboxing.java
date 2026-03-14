@@ -1,4 +1,3 @@
-package training;
 
 public class autoboxing {
 

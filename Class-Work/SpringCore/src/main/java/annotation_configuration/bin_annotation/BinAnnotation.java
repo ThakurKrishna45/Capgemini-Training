@@ -8,11 +8,12 @@ import org.springframework.context.annotation.Scope;
 public class BinAnnotation {
     @Scope(value = "prototype")
     @Bean(name = "getPerson")
-    public Person getPerson(){
-        return new Person(1,"John");
+    public Person getPerson() {
+        return new Person(1, "John");
     }
+
     @Bean(name = "getPerson1")
-    public Person getPerson1(){
-        return new Person(2,"Don");
+    public Person getPerson1() {
+        return new Person(2, "Don");
     }
 }
