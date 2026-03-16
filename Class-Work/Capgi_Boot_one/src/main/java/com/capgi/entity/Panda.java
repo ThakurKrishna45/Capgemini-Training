@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class Panda {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String name;
     private Double weight;

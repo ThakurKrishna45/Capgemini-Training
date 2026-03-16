@@ -15,4 +15,6 @@ public interface PandaService {
     void deleteBYId(Integer id);
 
     Panda findById(Integer id);
+
+    Object findByIdObjectType(Integer id);
 }

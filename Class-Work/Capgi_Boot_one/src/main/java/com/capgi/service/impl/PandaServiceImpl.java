@@ -56,4 +56,14 @@ public class PandaServiceImpl implements PandaService {
         return panda.get();
     }
 
+    @Override
+    public Object findByIdObjectType(Integer id) {
+       Optional<Panda> panda= pandaRepository.findById(id);
+       if (panda.isEmpty()){
+           return "Panda not found for the Id :"+id;
+       }
+
+        return panda.get();
+    }
+
 }

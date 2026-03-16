@@ -35,4 +35,9 @@ private final PandaService pandaService;
     public Panda findById(@PathVariable Integer id){
         return pandaService.findById(id);
     }
+    @GetMapping("ofindById/{id}")
+    public Object findByIdObjectType(@PathVariable Integer id){
+        return pandaService.findByIdObjectType(id);
+    }
+
 }
