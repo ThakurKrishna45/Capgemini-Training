@@ -4,6 +4,7 @@ import com.capgi.bank.config.CustomMapper;
 import com.capgi.bank.entity.Account;
 import com.capgi.bank.entity.dto.AccountDto;
 import com.capgi.bank.entity.dto.AccountResponseDto;
+import com.capgi.bank.exception.AccountNotFoundException;
 import com.capgi.bank.repository.AccountRepository;
 import com.capgi.bank.service.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -44,5 +45,30 @@ public class AccountSeriveImpl implements AccountService {
         List<Account> accountList = accountRepository.findAll();
         return accountList.stream().map(account ->  modelMapper.map(accountList, AccountResponseDto.class))
                 .toList();
+    }
+
+    @Override
+    public AccountResponseDto findByIdException(Integer id) {
+        Account account=accountRepository.findById(id).orElseThrow(()->new AccountNotFoundException("Account not found"+id));
+        AccountResponseDto accountResponseDto = modelMapper.map(account, AccountResponseDto.class);
+        return accountResponseDto;
+    }
+
+    @Override
+    public AccountResponseDto updateAccount(Integer id, AccountDto accountDto) {
+        Account account=accountRepository.findById(id).orElseThrow(()->new AccountNotFoundException("Account not found"+id));
+        modelMapper.getConfiguration().setSkipNullEnabled(false);
+        modelMapper.map(accountDto,account);
+        Account updatedAccount= accountRepository.save(account);
+        return modelMapper.map(updatedAccount,AccountResponseDto.class);
+    }
+
+    @Override
+    public AccountResponseDto updateAccountPatch(Integer id, AccountDto accountDto) {
+        Account account=accountRepository.findById(id).orElseThrow(()->new AccountNotFoundException("Account not found"+id));
+        modelMapper.getConfiguration().setSkipNullEnabled(true);
+        modelMapper.map(accountDto,account);
+        Account updatedAccount= accountRepository.save(account);
+        return modelMapper.map(updatedAccount,AccountResponseDto.class);
     }
 }

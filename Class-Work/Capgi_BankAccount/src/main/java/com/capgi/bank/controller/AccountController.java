@@ -7,6 +7,7 @@ import com.capgi.bank.entity.dto.ResponseDto;
 import com.capgi.bank.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,4 +33,25 @@ public class AccountController {
         List<AccountResponseDto> accountResponseDtoList=accountService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountConstant.STATUS_200,AccountConstant.Message_get,accountResponseDtoList));
     }
+    @GetMapping("/findByIdException")
+    public ResponseEntity<ResponseDto> findByIdException(@RequestParam Integer id){
+        AccountResponseDto accountResponseDto= accountService.findByIdException(id);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountConstant.STATUS_200,AccountConstant.Message_get,accountResponseDto));
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseDto> updateAccount(@PathVariable Integer id, @RequestBody AccountDto accountDto){
+        AccountResponseDto accountResponseDto=accountService.updateAccount(id,accountDto);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountConstant.STATUS_200,"Account updated successfully",accountResponseDto));
+    }
+    @PatchMapping("/{id}")
+    public ResponseEntity<ResponseDto> updateAccountPatch(@PathVariable Integer id, @RequestBody AccountDto accountDto){
+        AccountResponseDto accountResponseDto=accountService.updateAccountPatch(id,accountDto);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountConstant.STATUS_200,"Account updated successfully",accountResponseDto));
+    }
+    @PostMapping(value = "/xml", consumes = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<ResponseDto> createAccountXML(@RequestBody AccountDto accountDto){
+        accountService.createAccount(accountDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto(AccountConstant.STATUS_200,AccountConstant.MESSAGE_200));
+    }
+
 }

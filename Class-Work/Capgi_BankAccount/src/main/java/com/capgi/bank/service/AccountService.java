@@ -12,4 +12,10 @@ public interface AccountService {
     AccountResponseDto findById(Integer id);
 
     List<AccountResponseDto> findAll();
+
+    AccountResponseDto findByIdException(Integer id);
+
+    AccountResponseDto updateAccount(Integer id, AccountDto accountDto);
+
+    AccountResponseDto updateAccountPatch(Integer id, AccountDto accountDto);
 }
