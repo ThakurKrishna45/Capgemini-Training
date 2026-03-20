@@ -12,9 +12,11 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(AccountNotFoundException.class)
-    public ResponseEntity<ErrorResponseDto> handleAccountNotFoundException(AccountNotFoundException accountNotFoundException, WebRequest webRequest){
+    public ResponseEntity<ErrorResponseDto> handleAccountNotFoundException(AccountNotFoundException accountNotFoundException,
+                                                                           WebRequest webRequest){
         ErrorResponseDto errorResponseDto=new ErrorResponseDto(
-                webRequest.getDescription(false), HttpStatus.BAD_REQUEST, accountNotFoundException.getMessage(), LocalDateTime.now());
+                webRequest.getDescription(false), HttpStatus.BAD_REQUEST,
+                accountNotFoundException.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(errorResponseDto,HttpStatus.BAD_REQUEST);
     }
 }

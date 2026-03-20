@@ -18,4 +18,6 @@ public interface AccountService {
     AccountResponseDto updateAccount(Integer id, AccountDto accountDto);
 
     AccountResponseDto updateAccountPatch(Integer id, AccountDto accountDto);
+
+    void transferAmount(Integer fromId, Integer toId, Long amount);
 }

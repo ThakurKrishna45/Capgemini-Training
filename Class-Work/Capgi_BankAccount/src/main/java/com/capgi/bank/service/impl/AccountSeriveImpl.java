@@ -7,10 +7,12 @@ import com.capgi.bank.entity.dto.AccountResponseDto;
 import com.capgi.bank.exception.AccountNotFoundException;
 import com.capgi.bank.repository.AccountRepository;
 import com.capgi.bank.service.AccountService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,10 +67,35 @@ public class AccountSeriveImpl implements AccountService {
 
     @Override
     public AccountResponseDto updateAccountPatch(Integer id, AccountDto accountDto) {
-        Account account=accountRepository.findById(id).orElseThrow(()->new AccountNotFoundException("Account not found"+id));
+        Account account=accountRepository.findById(id)
+                .orElseThrow(()->new AccountNotFoundException("Account not found"+id));
         modelMapper.getConfiguration().setSkipNullEnabled(true);
         modelMapper.map(accountDto,account);
         Account updatedAccount= accountRepository.save(account);
         return modelMapper.map(updatedAccount,AccountResponseDto.class);
+    }
+
+    @Override
+    @Transactional
+    public void transferAmount(Integer fromId, Integer toId, Long amount) {
+
+            Account sender = accountRepository.findById(fromId)
+                    .orElseThrow(() -> new RuntimeException("Sender not found"));
+
+            sender.setBalance(sender.getBalance() - amount);
+
+            accountRepository.save(sender);
+
+
+//            if (true) {
+//                throw new RuntimeException("Something went wrong after debit!");
+//            }
+
+            Account receiver = accountRepository.findById(toId)
+                    .orElseThrow(() -> new RuntimeException("Receiver not found"));
+
+            receiver.setBalance(receiver.getBalance() + amount);
+            accountRepository.save(receiver);
+        System.out.println(sender.getBalance());
     }
 }

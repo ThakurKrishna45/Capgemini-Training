@@ -53,5 +53,11 @@ public class AccountController {
         accountService.createAccount(accountDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto(AccountConstant.STATUS_200,AccountConstant.MESSAGE_200));
     }
-
+    @PostMapping("/transferAmount")
+    public ResponseEntity<ResponseDto> transferAmount(@RequestParam Integer fromId,
+                                                      @RequestParam Integer toId,
+                                                      @RequestParam Long amount){
+        accountService.transferAmount(fromId,toId,amount);
+        return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(AccountConstant.STATUS_200,AccountConstant.MESSAGE_200));
+    }
 }
